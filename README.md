@@ -3,16 +3,16 @@
 > NOTE: [Gemini 2.0 Flash](https://cloud.google.com/vertex-ai/generative-ai/docs/gemini-v2) has been released! Here are the latest notebooks and demos using the new model:
 >
 > - [Intro to Gemini 2.0 Flash](gemini/getting-started/intro_gemini_2_0_flash.ipynb)
-> - [Intro to Gemini 2.0 Flash REST API](gemini/getting-started/intro_gemini_2_0_flash_rest_api.ipynb)
-> - [Intro to Code Execution](gemini/code-execution/intro_code_execution.ipynb)
-> - [Intro to Multimodal Live API](gemini/multimodal-live-api/intro_multimodal_live_api.ipynb)
 > - [Intro to Multimodal Live API with Gen AI SDK](gemini/multimodal-live-api/intro_multimodal_live_api_genai_sdk.ipynb)
+> - [Intro to Gemini 2.0 Thinking Mode](gemini/getting-started/intro_gemini_2_0_flash_thinking_mode.ipynb)
+> - [Intro to Code Execution](gemini/code-execution/intro_code_execution.ipynb)
 > - [Multimodal Live API Demo App](gemini/multimodal-live-api/websocket-demo-app/)
 > - [Intro to Google Gen AI SDK](gemini/getting-started/intro_genai_sdk.ipynb)
 > - [Real-Time RAG with Multimodal Live API](gemini/multimodal-live-api/real_time_rag_retail_gemini_2_0.ipynb)
 > - [Creating Marketing Assets using Gemini 2.0](gemini/use-cases/marketing/creating_marketing_assets_gemini_2_0.ipynb)
 > - [Vertex AI Gemini Research Multi Agent Demo Research Agent for EV Industry](gemini/agents/research-multi-agents)
 > - [Create a Multi-Speaker Podcast with Gemini 2.0 & Text-to-Speech](audio/speech/use-cases/podcast/multi-speaker-podcast.ipynb)
+> - [Intro to Gemini 2.0 Flash REST API](gemini/getting-started/intro_gemini_2_0_flash_rest_api.ipynb)
 
 <!-- markdownlint-disable MD033 -->
 
@@ -47,7 +47,7 @@ For more Vertex AI samples, please visit the [Vertex AI samples GitHub repositor
       <br>
       <a href="search/"><code>search/</code></a>
     </td>
-    <td>Use this folder if you're interested in using <a href="https://cloud.google.com/enterprise-search">Vertex AI Search</a>, a Google-managed solution to help you rapidly build search engines for websites and across enterprise data. (Formerly known as Enterprise Search on Generative AI App Builder)</td>
+    <td>Use this folder if you're interested in using <a href="https://cloud.google.com/enterprise-search">Vertex AI Search</a>, a Google-managed solution to help you rapidly build search engines for websites and across enterprise data. (Formerly known as Enterprise Search on Generative AI App Builder).</td>
   </tr>
   <tr>
     <td>
@@ -63,7 +63,7 @@ For more Vertex AI samples, please visit the [Vertex AI samples GitHub repositor
       <br>
       <a href="conversation/"><code>conversation/</code></a>
     </td>
-    <td>Use this folder if you're interested in using <a href="https://cloud.google.com/generative-ai-app-builder">Vertex AI Conversation</a>, a Google-managed solution to help you rapidly build chat bots for websites and across enterprise data. (Formerly known as Chat Apps on Generative AI App Builder)</td>
+    <td>Use this folder if you're interested in using <a href="https://cloud.google.com/generative-ai-app-builder">Vertex AI Conversation</a>, a Google-managed solution to help you rapidly build chat bots for websites and across enterprise data. (Formerly known as Chat Apps on Generative AI App Builder).</td>
   </tr>
   <tr>
     <td>
@@ -116,7 +116,7 @@ For more Vertex AI samples, please visit the [Vertex AI samples GitHub repositor
       <br>
       <a href="RESOURCES.md"><code>RESOURCES.md</code></a>
     </td>
-    <td>Learning resources (e.g. blogs, YouTube playlists) about Generative AI on Google Cloud</td>
+    <td>Learning resources (e.g. blogs, YouTube playlists) about Generative AI on Google Cloud.</td>
   </tr>
 </table>
 <!-- markdownlint-enable MD033 -->

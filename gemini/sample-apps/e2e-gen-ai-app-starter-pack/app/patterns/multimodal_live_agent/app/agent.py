@@ -15,14 +15,13 @@
 import os
 from typing import Dict
 
-import google
-import vertexai
-from google import genai
-from google.genai.types import LiveConnectConfig, Content, FunctionDeclaration, Tool
-from langchain_google_vertexai import VertexAIEmbeddings
-
-from app.templates import SYSTEM_INSTRUCTION, FORMAT_DOCS
+from app.templates import FORMAT_DOCS, SYSTEM_INSTRUCTION
 from app.vector_store import get_vector_store
+import google
+from google import genai
+from google.genai.types import Content, FunctionDeclaration, LiveConnectConfig, Tool
+from langchain_google_vertexai import VertexAIEmbeddings
+import vertexai
 
 # Constants
 VERTEXAI = os.getenv("VERTEXAI", "true").lower() == "true"
@@ -50,7 +49,7 @@ vector_store = get_vector_store(embedding=embedding, urls=URLS)
 retriever = vector_store.as_retriever()
 
 
-def retrieve_docs(query: str) -> Dict[str, str]:
+async def retrieve_docs(query: str) -> Dict[str, str]:
     """
     Retrieves pre-formatted documents about MLOps (Machine Learning Operations),
       Gen AI lifecycle, and production deployment best practices.
