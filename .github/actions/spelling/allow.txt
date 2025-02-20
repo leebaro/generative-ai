@@ -61,6 +61,7 @@ CWLEY
 CZE
 Caprese
 Chocolat
+Chunyuan
 Codicote
 Colm
 Connectez
@@ -76,6 +77,7 @@ DRV
 DVDs
 DWMWA
 Daniil
+Dedup
 DeepEval
 Depatmint
 Dexin
@@ -161,6 +163,7 @@ HVDC
 HZN
 Hamamoto
 Hamers
+Hannaneh
 Harvick
 Hawkins'll
 Hbf
@@ -170,6 +173,7 @@ Hisaki
 Hmmm
 Hogwarts
 Homesley
+Hritik
 Hubmann
 Hyperdisk
 ICICI
@@ -191,6 +195,8 @@ JPY
 Jax
 Jedi
 Jhamtani
+Jiacheng
+Jianfeng
 Jibo
 Joji
 Jolyon
@@ -408,6 +414,8 @@ Takeaways
 Tbk
 Tbl
 Tencent
+Terabyte
+Terabytes
 Testables
 Tetsuo
 Tianli
@@ -521,6 +529,7 @@ barmode
 barpolar
 baxis
 bbc
+bbq
 beir
 bff
 bgswap
@@ -603,6 +612,7 @@ dbln
 dcg
 ddbb
 ddl
+dedup
 deepeval
 deepseek
 demouser
@@ -829,6 +839,7 @@ loghub
 logparser
 logprobs
 lolcat
+loras
 lparam
 lru
 lsb
@@ -927,6 +938,7 @@ openai
 openfda
 opsz
 osm
+oss
 osx
 outdir
 outro
@@ -1002,6 +1014,7 @@ quadrotor
 qubit
 qubits
 quippy
+rag
 ragas
 ragdemos
 rahhhrr
@@ -1092,6 +1105,8 @@ takeaways
 tastetest
 tavily
 tencel
+terabyte
+terabytes
 termcolor
 terraform
 texting
@@ -1109,6 +1124,7 @@ tion
 titlebar
 tobytes
 toolcall
+toolu
 toself
 toset
 tqdm
@@ -1123,6 +1139,7 @@ tts
 tures
 typehints
 ubuntu
+udf
 uids
 ultrawide
 und
@@ -1149,6 +1166,7 @@ vnc
 voiceover
 vos
 votre
+vrtx
 vtotal
 vulnz
 waterjet
