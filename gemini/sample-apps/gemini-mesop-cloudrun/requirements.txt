@@ -1,7 +1,10 @@
 mesop
+<<<<<<< HEAD
 Flask==3.0.0
 gunicorn==23.0.0
 Werkzeug==3.0.6
+=======
+gunicorn==23.0.0
+>>>>>>> main
 dataclasses_json
-google-cloud-aiplatform
-google-cloud-logging
+google-genai

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # pylint: disable=invalid-name
+=======
+# pylint: disable=broad-exception-caught,broad-exception-raised,invalid-name
+>>>>>>> main
 """
 This module demonstrates the usage of the Gemini API in Vertex AI within a Streamlit application.
 """
@@ -6,6 +10,7 @@ This module demonstrates the usage of the Gemini API in Vertex AI within a Strea
 import os
 
 from google import genai
+<<<<<<< HEAD
 from google.genai.types import GenerateContentConfig, Part
 import streamlit as st
 
@@ -23,6 +28,44 @@ MODELS = {
     "gemini-2.0-flash-thinking-exp-01-21": "Gemini 2.0 Flash Thinking",
     "gemini-1.5-flash": "Gemini 1.5 Flash",
     "gemini-1.5-pro": "Gemini 1.5 Pro",
+=======
+import google.auth
+from google.genai.types import GenerateContentConfig, Part
+import httpx
+import streamlit as st
+
+
+def _project_id() -> str:
+    """Use the Google Auth helper (via the metadata service) to get the Google Cloud Project"""
+    try:
+        _, project = google.auth.default()
+    except google.auth.exceptions.DefaultCredentialsError as e:
+        raise Exception("Could not automatically determine credentials") from e
+    if not project:
+        raise Exception("Could not determine project from credentials.")
+    return project
+
+
+def _region() -> str:
+    """Use the local metadata service to get the region"""
+    try:
+        resp = httpx.get(
+            "http://metadata.google.internal/computeMetadata/v1/instance/region",
+            headers={"Metadata-Flavor": "Google"},
+        )
+        return resp.text.split("/")[-1]
+    except Exception:
+        return "us-central1"
+
+
+API_KEY = os.environ.get("GOOGLE_API_KEY")
+PROJECT_ID = os.environ.get("GOOGLE_CLOUD_PROJECT", _project_id())
+LOCATION = os.environ.get("GOOGLE_CLOUD_REGION", _region())
+MODELS = {
+    "gemini-2.0-flash": "Gemini 2.0 Flash",
+    "gemini-2.0-flash-lite": "Gemini 2.0 Flash-Lite",
+    "gemini-2.5-pro-preview-03-25": "Gemini 2.5 Pro",
+>>>>>>> main
 }
 
 
@@ -30,7 +73,14 @@ MODELS = {
 def load_client() -> genai.Client:
     """Load Google Gen AI Client."""
     return genai.Client(
+<<<<<<< HEAD
         vertexai=True, project=PROJECT_ID, location=LOCATION, api_key=API_KEY
+=======
+        vertexai=True,
+        project=PROJECT_ID,
+        location=LOCATION,
+        api_key=API_KEY,
+>>>>>>> main
     )
 
 
@@ -41,12 +91,110 @@ def get_model_name(name: str | None) -> str:
     return MODELS.get(name, "Gemini")
 
 
+<<<<<<< HEAD
 st.header(":sparkles: Gemini API in Vertex AI", divider="rainbow")
 client = load_client()
 
 tab1, tab2, tab3, tab4 = st.tabs(
     ["Generate story", "Marketing campaign", "Image Playground", "Video Playground"]
+=======
+st.link_button(
+    "View on GitHub",
+    "https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/sample-apps/gemini-streamlit-cloudrun",
+>>>>>>> main
 )
+
+cloud_run_service = os.environ.get("K_SERVICE")
+if cloud_run_service:
+    st.link_button(
+        "Open in Cloud Run",
+        f"https://console.cloud.google.com/run/detail/us-central1/{cloud_run_service}/source",
+    )
+
+st.header(":sparkles: Gemini API in Vertex AI", divider="rainbow")
+client = load_client()
+
+freeform_tab, tab1, tab2, tab3, tab4 = st.tabs(
+    [
+        "Freeform",
+        "Generate story",
+        "Marketing campaign",
+        "Image Playground",
+        "Video Playground",
+    ]
+)
+
+
+with freeform_tab:
+    st.subheader("Enter Your Own Prompt")
+
+    selected_model = st.radio(
+        "Select Model:",
+        MODELS.keys(),
+        format_func=get_model_name,
+        key="selected_model_freeform",
+        horizontal=True,
+    )
+
+    temperature = st.slider(
+        "Select the temperature (Model Randomness):",
+        min_value=0.0,
+        max_value=2.0,
+        value=0.5,
+        step=0.05,
+        key="temperature",
+    )
+
+    max_output_tokens = st.slider(
+        "Maximum Number of Tokens to Generate:",
+        min_value=1,
+        max_value=8192,
+        value=2048,
+        step=1,
+        key="max_output_tokens",
+    )
+
+    top_p = st.slider(
+        "Select the Top P",
+        min_value=0.0,
+        max_value=1.0,
+        value=0.95,
+        step=0.05,
+        key="top_p",
+    )
+
+    prompt = st.text_area(
+        "Enter your prompt here...",
+        key="prompt",
+        height=200,
+    )
+
+    config = GenerateContentConfig(
+        temperature=temperature,
+        max_output_tokens=max_output_tokens,
+        top_p=top_p,
+    )
+
+    generate_freeform = st.button("Generate", key="generate_freeform")
+    if generate_freeform and prompt:
+        with st.spinner(
+            f"Generating response using {get_model_name(selected_model)} ..."
+        ):
+            first_tab1, first_tab2 = st.tabs(["Response", "Prompt"])
+            with first_tab1:
+                response = client.models.generate_content(
+                    model=selected_model,
+                    contents=prompt,
+                    config=config,
+                ).text
+
+                if response:
+                    st.markdown(response)
+            with first_tab2:
+                st.markdown(
+                    f"""Parameters:\n- Model ID: `{selected_model}`\n- Temperature: `{temperature}`\n- Top P: `{top_p}`\n- Max Output Tokens: `{max_output_tokens}`\n"""
+                )
+                st.code(prompt, language="markdown")
 
 with tab1:
     st.subheader("Generate a story")
@@ -115,6 +263,7 @@ with tab1:
         max_output_tokens = 8192
 
     prompt = f"""Write a {length_of_story} story based on the following premise: \n
+<<<<<<< HEAD
     character_name: {character_name} \n
     character_type: {character_type} \n
     character_persona: {character_persona} \n
@@ -125,6 +274,18 @@ with tab1:
     First start by giving the book introduction, chapter introductions and then each chapter. It should also have a proper ending.
     The book should have prologue and epilogue.
     """
+=======
+  character_name: {character_name} \n
+  character_type: {character_type} \n
+  character_persona: {character_persona} \n
+  character_location: {character_location} \n
+  story_premise: {",".join(story_premise)} \n
+  If the story is "short", then make sure to have 5 chapters or else if it is "long" then 10 chapters.
+  Important point is that each chapters should be generated based on the premise given above.
+  First start by giving the book introduction, chapter introductions and then each chapter. It should also have a proper ending.
+  The book should have prologue and epilogue.
+  """
+>>>>>>> main
     config = GenerateContentConfig(
         temperature=temperature, max_output_tokens=max_output_tokens
     )
@@ -147,7 +308,11 @@ with tab1:
                     st.write(response)
             with first_tab2:
                 st.markdown(
+<<<<<<< HEAD
                     f"""Parameters:\n- Temperature: `{temperature}`\n- Max Output Tokens: `{max_output_tokens}`\n"""
+=======
+                    f"""Parameters:\n- Model ID: `{selected_model}`\n- Temperature: `{temperature}`\n- Max Output Tokens: `{max_output_tokens}`\n"""
+>>>>>>> main
                 )
                 st.code(prompt, language="markdown")
 
@@ -212,6 +377,7 @@ with tab2:
     )
 
     prompt = f"""Generate a marketing campaign for {product_name}, a {product_category} designed for the age group: {target_audience_age}.
+<<<<<<< HEAD
     The target location is this: {target_audience_location}.
     Aim to primarily achieve {campaign_goal}.
     Emphasize the product's unique selling proposition while using a {brand_voice} tone of voice.
@@ -242,6 +408,38 @@ with tab2:
    Give proper bullet points and headlines for the marketing campaign. Do not produce any empty lines.
    Be very succinct and to the point.
     """
+=======
+  The target location is this: {target_audience_location}.
+  Aim to primarily achieve {campaign_goal}.
+  Emphasize the product's unique selling proposition while using a {brand_voice} tone of voice.
+  Allocate the total budget of {estimated_budget}.
+  With these inputs, make sure to follow following guidelines and generate the marketing campaign with proper headlines: \n
+  - Briefly describe company, its values, mission, and target audience.
+  - Highlight any relevant brand guidelines or messaging frameworks.
+  - Provide a concise overview of the campaign's objectives and goals.
+  - Briefly explain the product or service being promoted.
+  - Define your ideal customer with clear demographics, psychographics, and behavioral insights.
+  - Understand their needs, wants, motivations, and pain points.
+  - Clearly articulate the desired outcomes for the campaign.
+  - Use SMART goals (Specific, Measurable, Achievable, Relevant, and Time-bound) for clarity.
+  - Define key performance indicators (KPIs) to track progress and success.
+  - Specify the primary and secondary goals of the campaign.
+  - Examples include brand awareness, lead generation, sales growth, or website traffic.
+  - Clearly define what differentiates your product or service from competitors.
+  - Emphasize the value proposition and unique benefits offered to the target audience.
+  - Define the desired tone and personality of the campaign messaging.
+  - Identify the specific channels you will use to reach your target audience.
+  - Clearly state the desired action you want the audience to take.
+  - Make it specific, compelling, and easy to understand.
+  - Identify and analyze your key competitors in the market.
+  - Understand their strengths and weaknesses, target audience, and marketing strategies.
+  - Develop a differentiation strategy to stand out from the competition.
+  - Define how you will track the success of the campaign.
+  - Utilize relevant KPIs to measure performance and return on investment (ROI).
+  Give proper bullet points and headlines for the marketing campaign. Do not produce any empty lines.
+  Be very succinct and to the point.
+  """
+>>>>>>> main
 
     config = GenerateContentConfig(temperature=0.8, max_output_tokens=8192)
 
@@ -391,7 +589,7 @@ If instructions include buttons, also explain where those buttons are physically
             "Our expectation: Document the entities and relationships in this ER diagram."
         )
         prompt = """Document the entities and relationships in this ER diagram.
-                """
+        """
         tab1, tab2 = st.tabs(["Response", "Prompt"])
         er_diag_img_description = st.button("Generate!", key="er_diag_img_description")
         with tab1:
@@ -414,7 +612,11 @@ If instructions include buttons, also explain where those buttons are physically
 
         st.write(
             """Gemini is capable of image comparison and providing recommendations. This can be useful in industries like e-commerce and retail.
+<<<<<<< HEAD
                     Below is an example of choosing which pair of glasses would be better suited to various face types:"""
+=======
+          Below is an example of choosing which pair of glasses would be better suited to various face types:"""
+>>>>>>> main
         )
         face_type = st.radio(
             "What is your face shape?",
@@ -438,6 +640,7 @@ If instructions include buttons, also explain where those buttons are physically
         )
         content = [
             f"""Which of these glasses you recommend for me based on the shape of my face:{face_type}?
+<<<<<<< HEAD
            I have an {face_type} shape face.
            Glasses 1: """,
             Part.from_uri(file_uri=compare_img_1_uri, mime_type="image/jpeg"),
@@ -448,6 +651,18 @@ If instructions include buttons, also explain where those buttons are physically
            Explain how you made to this decision.
            Provide your recommendation based on my face shape, and reasoning for each in {output_type} format.
            """,
+=======
+      I have an {face_type} shape face.
+      Glasses 1: """,
+            Part.from_uri(file_uri=compare_img_1_uri, mime_type="image/jpeg"),
+            """
+      Glasses 2: """,
+            Part.from_uri(file_uri=compare_img_2_uri, mime_type="image/jpeg"),
+            f"""
+      Explain how you made to this decision.
+      Provide your recommendation based on my face shape, and reasoning for each in {output_type} format.
+      """,
+>>>>>>> main
         ]
         tab1, tab2 = st.tabs(["Response", "Prompt"])
         compare_img_description = st.button(
@@ -479,11 +694,11 @@ If instructions include buttons, also explain where those buttons are physically
         st.image(math_image_uri, width=350, caption="Image of a math equation")
         st.markdown(
             """
-                Our expectation: Ask questions about the math equation as follows:
-                - Extract the formula.
-                - What is the symbol right before Pi? What does it mean?
-                - Is this a famous formula? Does it have a name?
-                    """
+        Our expectation: Ask questions about the math equation as follows:
+        - Extract the formula.
+        - What is the symbol right before Pi? What does it mean?
+        - Is this a famous formula? Does it have a name?
+          """
         )
         prompt = """
 Follow the instructions.
@@ -544,10 +759,10 @@ with tab4:
             st.video(video_desc_uri)
             st.write("Our expectation: Generate the description of the video")
             prompt = """Describe what is happening in the video and answer the following questions: \n
-            - What am I looking at? \n
-            - Where should I go to see it? \n
-            - What are other top 5 places in the world that look like this?
-            """
+      - What am I looking at? \n
+      - Where should I go to see it? \n
+      - What are other top 5 places in the world that look like this?
+      """
             tab1, tab2 = st.tabs(["Response", "Prompt"])
             vide_desc_description = st.button(
                 "Generate video description", key="vide_desc_description"
@@ -582,12 +797,12 @@ with tab4:
             st.video(video_tags_uri)
             st.write("Our expectation: Generate the tags for the video")
             prompt = """Answer the following questions using the video only:
-                        1. What is in the video?
-                        2. What objects are in the video?
-                        3. What is the action in the video?
-                        4. Provide 5 best tags for this video?
-                        Give the answer in the table format with question and answer as columns.
-            """
+            1. What is in the video?
+            2. What objects are in the video?
+            3. What is the action in the video?
+            4. Provide 5 best tags for this video?
+            Give the answer in the table format with question and answer as columns.
+      """
             tab1, tab2 = st.tabs(["Response", "Prompt"])
             video_tags_description = st.button(
                 "Generate video tags", key="video_tags_description"
@@ -626,7 +841,7 @@ What is the profession of the girl in this video?
 Which all features of the phone are highlighted here?
 Summarize the video in one paragraph.
 Provide the answer in table format.
-            """
+      """
             tab1, tab2 = st.tabs(["Response", "Prompt"])
             video_highlights_description = st.button(
                 "Generate video highlights", key="video_highlights_description"
@@ -661,20 +876,20 @@ Provide the answer in table format.
             st.video(video_geolocation_uri)
             st.markdown(
                 """Our expectation: \n
-            Answer the following questions from the video:
-                - What is this video about?
-                - How do you know which city it is?
-                - What street is this?
-                - What is the nearest intersection?
-            """
+      Answer the following questions from the video:
+        - What is this video about?
+        - How do you know which city it is?
+        - What street is this?
+        - What is the nearest intersection?
+      """
             )
             prompt = """Answer the following questions using the video only:
-            What is this video about?
-            How do you know which city it is?
-            What street is this?
-            What is the nearest intersection?
-            Answer the following questions in a table format with question and answer as columns.
-            """
+      What is this video about?
+      How do you know which city it is?
+      What street is this?
+      What is the nearest intersection?
+      Answer the following questions in a table format with question and answer as columns.
+      """
             tab1, tab2 = st.tabs(["Response", "Prompt"])
             video_geolocation_description = st.button(
                 "Generate", key="video_geolocation_description"

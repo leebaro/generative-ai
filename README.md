@@ -1,5 +1,6 @@
 # Generative AI
 
+<<<<<<< HEAD
 > NOTE: [Gemini 2.0 Flash-Lite and Gemini 2.0 Pro](https://cloud.google.com/vertex-ai/generative-ai/docs/gemini-v2) have been released!
 >
 > Here are the latest notebooks and demos using the new models:
@@ -10,14 +11,17 @@
 > - [Intro to Gemini 2.0 Thinking Mode](gemini/getting-started/intro_gemini_2_0_flash_thinking_mode.ipynb)
 > - [Intro to Code Execution](gemini/code-execution/intro_code_execution.ipynb)
 > - [Multimodal Live API Demo App](gemini/multimodal-live-api/websocket-demo-app/)
+=======
+> NOTE: [Gemini 2.5 Pro](https://cloud.google.com/vertex-ai/generative-ai/docs/gemini-v2) has been released!
+>
+> Here are the latest notebooks and demos using the new models:
+>
+> - [Intro to Gemini 2.5 Pro](gemini/getting-started/intro_gemini_2_5_pro.ipynb)
+>>>>>>> main
 
 <!-- markdownlint-disable MD033 -->
 
-<a href="gemini"><img src="https://lh3.googleusercontent.com/eDr6pYKs1tT0iK0nt3pPhvVlP2Wn96fbGqbWgBAARRZ7isej037g_tWobjV8zQkxOsWzJuEH8p-fksczXUOeqxGZZIo_HUCdkn8q-a4fuwATD7Q9Xrs=w2456-l100-sg-rj-c0xffffff" style="width:35em" alt="Welcome to the Gemini era"></a>
-
-This repository contains notebooks, code samples, sample apps, and other resources that demonstrate how to use, develop and manage generative AI workflows using [Generative AI on Google Cloud](https://cloud.google.com/ai/generative-ai), powered by [Vertex AI](https://cloud.google.com/vertex-ai).
-
-For more Vertex AI samples, please visit the [Vertex AI samples GitHub repository](https://github.com/GoogleCloudPlatform/vertex-ai-samples/).
+This repository contains notebooks, code samples, sample apps, and other resources that demonstrate how to use, develop and manage generative AI workflows using [Generative AI on Google Cloud](https://cloud.google.com/ai/generative-ai) with [Vertex AI](https://cloud.google.com/vertex-ai).
 
 ## Using this repository
 
@@ -56,6 +60,7 @@ For more Vertex AI samples, please visit the [Vertex AI samples GitHub repositor
   </tr>
   <tr>
     <td>
+<<<<<<< HEAD
       <img src="https://www.gstatic.com/images/branding/gcpiconscolors/dialogflow_cx/v1/24px.svg" width="40px" alt="Conversation">
       <br>
       <a href="conversation/"><code>conversation/</code></a>
@@ -74,6 +79,8 @@ For more Vertex AI samples, please visit the [Vertex AI samples GitHub repositor
   </tr>
   <tr>
     <td>
+=======
+>>>>>>> main
       <img src="https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/image/default/40px.svg" alt="Vision">
       <br>
       <a href="vision/"><code>vision/</code></a>
@@ -120,6 +127,9 @@ For more Vertex AI samples, please visit the [Vertex AI samples GitHub repositor
 
 ## Related Repositories
 
+- [🚀 Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack)
+  - A collection of production-ready Generative AI Agent templates built for Google Cloud.
+  - It accelerates development by providing a holistic, production-ready solution, addressing common challenges (Deployment & Operations, Evaluation, Customization, Observability) in building and deploying Gen AI agents.
 - [Gemini Cookbook](https://github.com/google-gemini/cookbook/)
 - [Google Cloud Applied AI Engineering](https://github.com/GoogleCloudPlatform/applied-ai-engineering-samples)
 - [Generative AI for Marketing using Google Cloud](https://github.com/GoogleCloudPlatform/genai-for-marketing)
@@ -136,7 +146,7 @@ For more Vertex AI samples, please visit the [Vertex AI samples GitHub repositor
   - [Reimagining Customer Experience 360](https://github.com/GoogleCloudPlatform/dialogflow-ccai-omnichannel)
 - Document AI
   - [Document AI Samples](https://github.com/GoogleCloudPlatform/document-ai-samples)
-- Duet AI
+- Gemini in Google Cloud
   - [Cymbal Superstore](https://github.com/GoogleCloudPlatform/cymbal-superstore)
 - Cloud Databases
   - [Gen AI Databases Retrieval App](https://github.com/GoogleCloudPlatform/genai-databases-retrieval-app)
@@ -152,6 +162,7 @@ For more Vertex AI samples, please visit the [Vertex AI samples GitHub repositor
   - [mis-ai-accelerator](https://github.com/GoogleCloudPlatform/mis-ai-accelerator)
   - [dataflow-opinion-analysis](https://github.com/GoogleCloudPlatform/dataflow-opinion-analysis)
   - [genai-beyond-basics](https://github.com/meteatamel/genai-beyond-basics)
+  - [Gemini by Example](https://geminibyexample.com)
 
 ## Contributing
 

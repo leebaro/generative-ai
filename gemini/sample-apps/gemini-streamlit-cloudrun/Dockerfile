@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 FROM python:3.12-slim
+=======
+FROM python:3.13-slim
+>>>>>>> main
 
 EXPOSE 8080
 WORKDIR /app

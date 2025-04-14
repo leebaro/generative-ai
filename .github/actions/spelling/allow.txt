@@ -16,6 +16,11 @@ ASF
 ASGI
 ASML
 AUVs
+<<<<<<< HEAD
+=======
+Aadila
+Afshaan
+>>>>>>> main
 Aktu
 Aphone
 Arborio
@@ -42,6 +47,11 @@ Broadoak
 Brusdar
 Btn
 Buckleys
+<<<<<<< HEAD
+=======
+Bulmus
+Byzance
+>>>>>>> main
 CALIPSO
 CAMQAA
 CHECKOV
@@ -61,6 +71,10 @@ CWLEY
 CZE
 Caprese
 Chocolat
+<<<<<<< HEAD
+=======
+Chrono
+>>>>>>> main
 Chunyuan
 Codicote
 Colm
@@ -77,6 +91,10 @@ DRV
 DVDs
 DWMWA
 Daniil
+<<<<<<< HEAD
+=======
+DataFrame
+>>>>>>> main
 Dedup
 DeepEval
 Depatmint
@@ -99,6 +117,7 @@ EMFU
 EMNLP
 ENU
 ESG
+ESRB
 EVs
 Edunov
 Einhalt
@@ -110,6 +129,7 @@ Eragon
 Esin
 Eventarc
 FAISS
+FAQs
 FIA
 FILEFLAGS
 FILEOS
@@ -119,6 +139,10 @@ FPDF
 FREDDIE
 FTPS
 Fangming
+<<<<<<< HEAD
+=======
+Fastmcp
+>>>>>>> main
 Feitian
 Finvest
 Fishburne
@@ -127,6 +151,10 @@ Flatform
 Flipkart
 Folmer
 Frodo
+<<<<<<< HEAD
+=======
+GEOGPOINT
+>>>>>>> main
 GError
 GFile
 GKE
@@ -136,6 +164,7 @@ Gabeira
 Gameplay
 Gatace
 GenTwo
+Geralt
 Gfm
 Giancarlo
 Gisting
@@ -170,6 +199,7 @@ Hbf
 Hida
 Hikaru
 Hisaki
+Hlc
 Hmmm
 Hogwarts
 Homesley
@@ -194,6 +224,7 @@ JHome
 JPY
 Jax
 Jedi
+Jestem
 Jhamtani
 Jiacheng
 Jianfeng
@@ -239,11 +270,13 @@ Loghub
 Logrus
 Lopyrev
 Lottry
+MCP
 MFU
 MICOA
 MLB
 MLOPs
 MMA
+MMO
 MSCHF
 MSGSEND
 MTL
@@ -257,7 +290,9 @@ Masaru
 Mbappe
 Meawad
 Mega
+Meinl
 Memegen
+Merhaba
 Mesop
 Meteo
 Mewgler
@@ -266,6 +301,10 @@ Mirai
 Mitani
 Molaison
 Mookie
+<<<<<<< HEAD
+=======
+Mosi
+>>>>>>> main
 Mvar
 NADPH
 NARI
@@ -280,11 +319,13 @@ NMT
 NOMINATIM
 NOMINMAX
 NOZORDER
+NPCs
 NREL
 NVIDIA
 NVL
 Nagasu
 Nakoso
+Napisz
 Narnia
 Niitsuma
 Nith
@@ -296,17 +337,21 @@ Ohashi
 Ohtani
 Olgivanna
 Ollama
+Olá
 Omnibox
 Onone
 Oort
 Orbelians
+Orus
 PBA
 PDEs
 PDFs
 PEFT
+PEGI
 PGHOST
 PGPORT
 PGUSER
+PLLu
 PLOTLYENV
 PPO
 PYINK
@@ -320,6 +365,7 @@ Phanfone
 Pharma
 Photoshop
 Pistorius
+Polong
 Pranav
 Pré
 Pzk
@@ -338,11 +384,16 @@ RRF
 RTN
 RUNPATH
 RYDE
+Rabbids
 Raducanu
 Raikkonen
 Rajpurkar
 Reranking
 Resona
+<<<<<<< HEAD
+=======
+Rivia
+>>>>>>> main
 Rizzoli
 Robeco
 Robo
@@ -384,6 +435,10 @@ Sketchfab
 Smartbuy
 Smaug
 Smol
+<<<<<<< HEAD
+=======
+Sono
+>>>>>>> main
 Statcast
 Storrer
 Strappy
@@ -428,6 +483,8 @@ Tricyle
 UDF
 UDFs
 USERDATA
+USK
+UVX
 Unimicron
 Upserting
 Urs
@@ -462,11 +519,13 @@ WAU
 WDIR
 WFH
 WNDCLASS
+WRatio
 WXGA
 Wakatipu
 Wehn
 Wehrlein
 Welwyn
+Witaj
 Wnd
 Womens
 XGA
@@ -503,6 +562,7 @@ antiword
 apikeys
 apk
 appuser
+appyaml
 apredict
 aquery
 arange
@@ -514,6 +574,7 @@ arxiv
 astype
 atms
 aujourd'hui
+autocal
 autoflake
 autogen
 automerge
@@ -574,6 +635,7 @@ cloudrun
 cloudveil
 clsx
 cmap
+cmn
 cnf
 codebase
 codebases
@@ -595,6 +657,7 @@ corpuses
 countplot
 cpet
 crewai
+crosstab
 csa
 cse
 ctd
@@ -605,7 +668,6 @@ cycleways
 cygpath
 darkgrid
 dask
-dataframe
 datname
 dbadmin
 dbln
@@ -638,10 +700,13 @@ drinkware
 dropdown
 dropna
 dsl
+dsn
 dtype
 dtypes
 dumfries
 dumpd
+dunia
+dvd
 dwmapi
 ecommerce
 ein
@@ -662,16 +727,20 @@ envsubst
 epath
 epoc
 erlang
+errlog
 erty
 etf
 etils
+eula
 eur
 evals
+eventarc
 evse
 evt
 expl
 faiss
 fastapi
+fastmcp
 fda
 fea
 fect
@@ -702,6 +771,7 @@ fulltext
 fullurl
 functiona
 futur
+gameplay
 gapic
 gauff
 gbif
@@ -742,6 +812,10 @@ gpu
 gradio
 gradlew
 gridcolor
+gridless
+gridpoint
+groupadd
+groupchat
 grpcio
 gshoe
 gspread
@@ -764,19 +838,30 @@ https
 httpx
 hwnd
 hypercorn
+<<<<<<< HEAD
+=======
+iap
+>>>>>>> main
 iban
+icd
 icudtl
 idcg
 idk
 idks
 idxs
 ience
+ifconfig
 ifidx
+iinfo
 iloc
 imagefont
 imageno
 imagetext
 imdb
+<<<<<<< HEAD
+=======
+imencode
+>>>>>>> main
 importmap
 imread
 imshow
@@ -799,11 +884,13 @@ ixed
 ized
 javac
 jegadesh
+jesieni
 jetbrains
 jit
 jiwer
 jsonify
 jsonlines
+jsonplus
 jupyter
 jvm
 kaggle
@@ -814,19 +901,26 @@ keychain
 kfp
 khz
 kickstart
+knative
 konnte
 kotlin
 kpi
+kubectl
 l'harmonie
 lakecolor
 landcolor
 landuse
 langgraph
 latte
+<<<<<<< HEAD
+=======
+lecie
+>>>>>>> main
 lego
 lenzing
 levelname
 lexer
+liberties
 linalg
 linecolor
 linestyle
@@ -851,12 +945,15 @@ mahut
 makeover
 manquez
 mapbox
+marp
 maskmode
 mavenrc
 maxcold
 mbsdk
+mcp
 mdc
 mec
+mediapy
 meme
 memes
 mesop
@@ -883,6 +980,7 @@ mrtydi
 msmarco
 msr
 multitool
+mundo
 mvn
 mvnw
 mvp
@@ -912,6 +1010,7 @@ nfl
 nginx
 ngram
 ngrams
+nih
 nlp
 nmade
 nmilitary
@@ -973,6 +1072,7 @@ pincodes
 pixmap
 pkl
 playlists
+pllum
 plotly
 plpgsql
 plt
@@ -985,6 +1085,7 @@ powerups
 praw
 prcntg
 preds
+pregel
 produc
 programar
 projectid
@@ -1008,6 +1109,7 @@ pysftp
 pytorch
 pyvis
 qna
+qqq
 qrel
 qrels
 quadrotor
@@ -1037,6 +1139,7 @@ reranker
 reranking
 reranks
 resil
+retryable
 ribeye
 ricc
 ringspun
@@ -1057,6 +1160,7 @@ selectbox
 selftext
 selkirk
 seo
+serde
 setlocal
 sft
 shortdesc
@@ -1081,6 +1185,7 @@ spearmanr
 sqkm
 srlimit
 ssd
+sse
 ssh
 ssml
 ssn
@@ -1095,8 +1200,10 @@ stt
 stuffie
 subviews
 subword
+suis
 sunner
 supima
+svh
 svm
 sxs
 tabular
@@ -1149,6 +1256,7 @@ unrtf
 upsell
 urandom
 usb
+usd
 usebackq
 usecases
 username
@@ -1156,10 +1264,15 @@ usernames
 uuids
 uvb
 uvicorn
+uvx
 vais
 vapo
 vectoral
 vectordb
+<<<<<<< HEAD
+=======
+veo
+>>>>>>> main
 vesselin
 vllm
 vnc
@@ -1184,7 +1297,12 @@ websites
 weightage
 welcom
 werden
+wereld
 wght
+<<<<<<< HEAD
+=======
+wiersz
+>>>>>>> main
 wiffle
 wikipedia
 wil
@@ -1227,3 +1345,4 @@ ytd
 yticks
 zakarid
 zaxis
+zimie
