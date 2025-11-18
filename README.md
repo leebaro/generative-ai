@@ -1,23 +1,11 @@
-# Generative AI
+# Generative AI on Google Cloud
 
-<<<<<<< HEAD
-> NOTE: [Gemini 2.0 Flash-Lite and Gemini 2.0 Pro](https://cloud.google.com/vertex-ai/generative-ai/docs/gemini-v2) have been released!
->
-> Here are the latest notebooks and demos using the new models:
-> - [Intro to Gemini 2.0 Pro](gemini/getting-started/intro_gemini_2_0_pro.ipynb)
-> - [Intro to Gemini 2.0 Flash-Lite](gemini/getting-started/intro_gemini_2_0_flash_lite.ipynb)
-> - [Intro to Gemini 2.0 Flash](gemini/getting-started/intro_gemini_2_0_flash.ipynb)
-> - [Intro to Multimodal Live API with Gen AI SDK](gemini/multimodal-live-api/intro_multimodal_live_api_genai_sdk.ipynb)
-> - [Intro to Gemini 2.0 Thinking Mode](gemini/getting-started/intro_gemini_2_0_flash_thinking_mode.ipynb)
-> - [Intro to Code Execution](gemini/code-execution/intro_code_execution.ipynb)
-> - [Multimodal Live API Demo App](gemini/multimodal-live-api/websocket-demo-app/)
-=======
-> NOTE: [Gemini 2.5 Pro](https://cloud.google.com/vertex-ai/generative-ai/docs/gemini-v2) has been released!
+> **[Gemini 2.5 Pro](https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-pro) and [Gemini 2.5 Flash](https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash) have been released!**
 >
 > Here are the latest notebooks and demos using the new models:
 >
 > - [Intro to Gemini 2.5 Pro](gemini/getting-started/intro_gemini_2_5_pro.ipynb)
->>>>>>> main
+> - [Intro to Gemini 2.5 Flash](gemini/getting-started/intro_gemini_2_5_flash.ipynb)
 
 <!-- markdownlint-disable MD033 -->
 
@@ -60,27 +48,6 @@ This repository contains notebooks, code samples, sample apps, and other resourc
   </tr>
   <tr>
     <td>
-<<<<<<< HEAD
-      <img src="https://www.gstatic.com/images/branding/gcpiconscolors/dialogflow_cx/v1/24px.svg" width="40px" alt="Conversation">
-      <br>
-      <a href="conversation/"><code>conversation/</code></a>
-    </td>
-    <td>Use this folder if you're interested in using <a href="https://cloud.google.com/generative-ai-app-builder">Vertex AI Conversation</a>, a Google-managed solution to help you rapidly build chat bots for websites and across enterprise data. (Formerly known as Chat Apps on Generative AI App Builder).</td>
-  </tr>
-  <tr>
-    <td>
-      <img src="https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_note/default/40px.svg" alt="Language">
-      <br>
-      <a href="language/"><code>language/</code></a>
-    </td>
-    <td>
-      Use this folder if you're interested in building your own solutions from scratch using Google's language foundation models (Vertex AI PaLM API).
-    </td>
-  </tr>
-  <tr>
-    <td>
-=======
->>>>>>> main
       <img src="https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/image/default/40px.svg" alt="Vision">
       <br>
       <a href="vision/"><code>vision/</code></a>
@@ -127,11 +94,14 @@ This repository contains notebooks, code samples, sample apps, and other resourc
 
 ## Related Repositories
 
+- ✨ [Agent Development Kit (ADK) Samples](https://github.com/google/adk-samples): This repository provides ready-to-use agents built on top of the Agent Development Kit, designed to accelerate your development process. These agents cover a range of common use cases and complexities, from simple conversational bots to complex multi-agent workflows.
 - [🚀 Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack)
   - A collection of production-ready Generative AI Agent templates built for Google Cloud.
   - It accelerates development by providing a holistic, production-ready solution, addressing common challenges (Deployment & Operations, Evaluation, Customization, Observability) in building and deploying Gen AI agents.
 - [Gemini Cookbook](https://github.com/google-gemini/cookbook/)
 - [Google Cloud Applied AI Engineering](https://github.com/GoogleCloudPlatform/applied-ai-engineering-samples)
+- [Vertex AI GenMedia Creative Studio](https://github.com/GoogleCloudPlatform/vertex-ai-creative-studio) - Experience Google's generative media foundational models + custom workflows.
+- [MCP Servers for GenMedia](https://goo.gle/vertex-genmedia-mcp) - Empower your agents with generative media tools.
 - [Generative AI for Marketing using Google Cloud](https://github.com/GoogleCloudPlatform/genai-for-marketing)
 - [Generative AI for Developer Productivity](https://github.com/GoogleCloudPlatform/genai-for-developers)
 - Vertex AI Core

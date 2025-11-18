@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# pylint: disable=invalid-name
-=======
 # pylint: disable=broad-exception-caught,broad-exception-raised,invalid-name
->>>>>>> main
 """
 This module demonstrates the usage of the Gemini API in Vertex AI within a Streamlit application.
 """
@@ -10,27 +6,8 @@ This module demonstrates the usage of the Gemini API in Vertex AI within a Strea
 import os
 
 from google import genai
-<<<<<<< HEAD
-from google.genai.types import GenerateContentConfig, Part
-import streamlit as st
-
-API_KEY = os.environ.get("GOOGLE_API_KEY")
-PROJECT_ID = os.environ.get("GOOGLE_CLOUD_PROJECT")
-LOCATION = os.environ.get("GOOGLE_CLOUD_REGION")
-
-if PROJECT_ID and not LOCATION:
-    LOCATION = "us-central1"
-
-MODELS = {
-    "gemini-2.0-flash-001": "Gemini 2.0 Flash",
-    "gemini-2.0-pro-exp-02-05": "Gemini 2.0 Pro",
-    "gemini-2.0-flash-lite-preview-02-05": "Gemini 2.0 Flash-Lite",
-    "gemini-2.0-flash-thinking-exp-01-21": "Gemini 2.0 Flash Thinking",
-    "gemini-1.5-flash": "Gemini 1.5 Flash",
-    "gemini-1.5-pro": "Gemini 1.5 Pro",
-=======
 import google.auth
-from google.genai.types import GenerateContentConfig, Part
+from google.genai.types import GenerateContentConfig, Part, ThinkingConfig
 import httpx
 import streamlit as st
 
@@ -58,29 +35,47 @@ def _region() -> str:
         return "us-central1"
 
 
-API_KEY = os.environ.get("GOOGLE_API_KEY")
-PROJECT_ID = os.environ.get("GOOGLE_CLOUD_PROJECT", _project_id())
-LOCATION = os.environ.get("GOOGLE_CLOUD_REGION", _region())
 MODELS = {
     "gemini-2.0-flash": "Gemini 2.0 Flash",
     "gemini-2.0-flash-lite": "Gemini 2.0 Flash-Lite",
-    "gemini-2.5-pro-preview-03-25": "Gemini 2.5 Pro",
->>>>>>> main
+    "gemini-2.5-flash-lite": "Gemini 2.5 Flash-Lite",
+    "gemini-2.5-pro": "Gemini 2.5 Pro",
+    "gemini-2.5-flash": "Gemini 2.5 Flash",
+    "model-optimizer-exp-04-09": "Model Optimizer",
+}
+
+THINKING_BUDGET_MODELS = {
+    "gemini-2.5-pro",
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite",
 }
 
 
 @st.cache_resource
 def load_client() -> genai.Client:
     """Load Google Gen AI Client."""
+    API_KEY = os.environ.get("GOOGLE_API_KEY")
+    PROJECT_ID = os.environ.get("GOOGLE_CLOUD_PROJECT", _project_id())
+    LOCATION = os.environ.get("GOOGLE_CLOUD_REGION", _region())
+
+    if not API_KEY and not PROJECT_ID:
+        st.error(
+            "🚨 Configuration Error: Please set either `GOOGLE_API_KEY` or ensure "
+            "Application Default Credentials (ADC) with a Project ID are configured."
+        )
+        st.stop()
+    if not LOCATION:
+        st.warning(
+            "⚠️ Could not determine Google Cloud Region. Using 'global'. "
+            "Ensure GOOGLE_CLOUD_REGION environment variable is set or metadata service is accessible if needed."
+        )
+        LOCATION = "global"
+
     return genai.Client(
-<<<<<<< HEAD
-        vertexai=True, project=PROJECT_ID, location=LOCATION, api_key=API_KEY
-=======
         vertexai=True,
         project=PROJECT_ID,
         location=LOCATION,
         api_key=API_KEY,
->>>>>>> main
     )
 
 
@@ -91,17 +86,9 @@ def get_model_name(name: str | None) -> str:
     return MODELS.get(name, "Gemini")
 
 
-<<<<<<< HEAD
-st.header(":sparkles: Gemini API in Vertex AI", divider="rainbow")
-client = load_client()
-
-tab1, tab2, tab3, tab4 = st.tabs(
-    ["Generate story", "Marketing campaign", "Image Playground", "Video Playground"]
-=======
 st.link_button(
     "View on GitHub",
     "https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/sample-apps/gemini-streamlit-cloudrun",
->>>>>>> main
 )
 
 cloud_run_service = os.environ.get("K_SERVICE")
@@ -114,27 +101,50 @@ if cloud_run_service:
 st.header(":sparkles: Gemini API in Vertex AI", divider="rainbow")
 client = load_client()
 
+selected_model = st.radio(
+    "Select Model:",
+    MODELS.keys(),
+    format_func=get_model_name,
+    key="selected_model",
+    horizontal=True,
+)
+
+thinking_budget = None
+if selected_model in THINKING_BUDGET_MODELS:
+    thinking_budget_mode = st.selectbox(
+        "Thinking budget",
+        ("Auto", "Manual", "Off"),
+        key="thinking_budget_mode_selectbox",
+    )
+
+    if thinking_budget_mode == "Manual":
+        thinking_budget = st.slider(
+            "Thinking budget token limit",
+            min_value=0,
+            max_value=24576,
+            step=1,
+            key="thinking_budget_manual_slider",
+        )
+    elif thinking_budget_mode == "Off":
+        thinking_budget = 0
+
+thinking_config = (
+    ThinkingConfig(thinking_budget=thinking_budget)
+    if thinking_budget is not None
+    else None
+)
 freeform_tab, tab1, tab2, tab3, tab4 = st.tabs(
     [
-        "Freeform",
-        "Generate story",
-        "Marketing campaign",
-        "Image Playground",
-        "Video Playground",
+        "✍️ Freeform",
+        "📖 Generate Story",
+        "📢 Marketing Campaign",
+        "🖼️ Image Playground",
+        "🎬 Video Playground",
     ]
 )
 
-
 with freeform_tab:
     st.subheader("Enter Your Own Prompt")
-
-    selected_model = st.radio(
-        "Select Model:",
-        MODELS.keys(),
-        format_func=get_model_name,
-        key="selected_model_freeform",
-        horizontal=True,
-    )
 
     temperature = st.slider(
         "Select the temperature (Model Randomness):",
@@ -173,6 +183,7 @@ with freeform_tab:
         temperature=temperature,
         max_output_tokens=max_output_tokens,
         top_p=top_p,
+        thinking_config=thinking_config,
     )
 
     generate_freeform = st.button("Generate", key="generate_freeform")
@@ -194,18 +205,12 @@ with freeform_tab:
                 st.markdown(
                     f"""Parameters:\n- Model ID: `{selected_model}`\n- Temperature: `{temperature}`\n- Top P: `{top_p}`\n- Max Output Tokens: `{max_output_tokens}`\n"""
                 )
+                if thinking_budget is not None:
+                    st.markdown(f"- Thinking Budget: `{thinking_budget}`\n")
                 st.code(prompt, language="markdown")
 
 with tab1:
     st.subheader("Generate a story")
-
-    selected_model = st.radio(
-        "Select Model:",
-        MODELS.keys(),
-        format_func=get_model_name,
-        key="selected_model_story",
-        horizontal=True,
-    )
 
     # Story premise
     character_name = st.text_input(
@@ -263,18 +268,6 @@ with tab1:
         max_output_tokens = 8192
 
     prompt = f"""Write a {length_of_story} story based on the following premise: \n
-<<<<<<< HEAD
-    character_name: {character_name} \n
-    character_type: {character_type} \n
-    character_persona: {character_persona} \n
-    character_location: {character_location} \n
-    story_premise: {",".join(story_premise)} \n
-    If the story is "short", then make sure to have 5 chapters or else if it is "long" then 10 chapters.
-    Important point is that each chapters should be generated based on the premise given above.
-    First start by giving the book introduction, chapter introductions and then each chapter. It should also have a proper ending.
-    The book should have prologue and epilogue.
-    """
-=======
   character_name: {character_name} \n
   character_type: {character_type} \n
   character_persona: {character_persona} \n
@@ -285,9 +278,10 @@ with tab1:
   First start by giving the book introduction, chapter introductions and then each chapter. It should also have a proper ending.
   The book should have prologue and epilogue.
   """
->>>>>>> main
     config = GenerateContentConfig(
-        temperature=temperature, max_output_tokens=max_output_tokens
+        temperature=temperature,
+        max_output_tokens=max_output_tokens,
+        thinking_config=thinking_config,
     )
 
     generate_t2t = st.button("Generate my story", key="generate_t2t")
@@ -308,24 +302,14 @@ with tab1:
                     st.write(response)
             with first_tab2:
                 st.markdown(
-<<<<<<< HEAD
-                    f"""Parameters:\n- Temperature: `{temperature}`\n- Max Output Tokens: `{max_output_tokens}`\n"""
-=======
                     f"""Parameters:\n- Model ID: `{selected_model}`\n- Temperature: `{temperature}`\n- Max Output Tokens: `{max_output_tokens}`\n"""
->>>>>>> main
                 )
+                if thinking_budget is not None:
+                    st.markdown(f"- Thinking Budget: `{thinking_budget}`\n")
                 st.code(prompt, language="markdown")
 
 with tab2:
     st.subheader("Generate your marketing campaign")
-
-    selected_model = st.radio(
-        "Select Model:",
-        MODELS,
-        format_func=get_model_name,
-        key="selected_model_marketing",
-        horizontal=True,
-    )
 
     product_name = st.text_input(
         "What is the name of the product? \n\n", key="product_name", value="ZomZoo"
@@ -377,38 +361,6 @@ with tab2:
     )
 
     prompt = f"""Generate a marketing campaign for {product_name}, a {product_category} designed for the age group: {target_audience_age}.
-<<<<<<< HEAD
-    The target location is this: {target_audience_location}.
-    Aim to primarily achieve {campaign_goal}.
-    Emphasize the product's unique selling proposition while using a {brand_voice} tone of voice.
-    Allocate the total budget of {estimated_budget}.
-    With these inputs, make sure to follow following guidelines and generate the marketing campaign with proper headlines: \n
-    - Briefly describe company, its values, mission, and target audience.
-    - Highlight any relevant brand guidelines or messaging frameworks.
-    - Provide a concise overview of the campaign's objectives and goals.
-    - Briefly explain the product or service being promoted.
-    - Define your ideal customer with clear demographics, psychographics, and behavioral insights.
-    - Understand their needs, wants, motivations, and pain points.
-    - Clearly articulate the desired outcomes for the campaign.
-    - Use SMART goals (Specific, Measurable, Achievable, Relevant, and Time-bound) for clarity.
-    - Define key performance indicators (KPIs) to track progress and success.
-    - Specify the primary and secondary goals of the campaign.
-    - Examples include brand awareness, lead generation, sales growth, or website traffic.
-    - Clearly define what differentiates your product or service from competitors.
-    - Emphasize the value proposition and unique benefits offered to the target audience.
-    - Define the desired tone and personality of the campaign messaging.
-    - Identify the specific channels you will use to reach your target audience.
-    - Clearly state the desired action you want the audience to take.
-    - Make it specific, compelling, and easy to understand.
-    - Identify and analyze your key competitors in the market.
-    - Understand their strengths and weaknesses, target audience, and marketing strategies.
-    - Develop a differentiation strategy to stand out from the competition.
-    - Define how you will track the success of the campaign.
-   -  Utilize relevant KPIs to measure performance and return on investment (ROI).
-   Give proper bullet points and headlines for the marketing campaign. Do not produce any empty lines.
-   Be very succinct and to the point.
-    """
-=======
   The target location is this: {target_audience_location}.
   Aim to primarily achieve {campaign_goal}.
   Emphasize the product's unique selling proposition while using a {brand_voice} tone of voice.
@@ -439,9 +391,12 @@ with tab2:
   Give proper bullet points and headlines for the marketing campaign. Do not produce any empty lines.
   Be very succinct and to the point.
   """
->>>>>>> main
 
-    config = GenerateContentConfig(temperature=0.8, max_output_tokens=8192)
+    config = GenerateContentConfig(
+        temperature=0.8,
+        max_output_tokens=8192,
+        thinking_config=thinking_config,
+    )
 
     generate_t2t = st.button("Generate my campaign", key="generate_campaign")
     if generate_t2t and prompt:
@@ -464,22 +419,14 @@ with tab2:
 with tab3:
     st.subheader("Image Playground")
 
-    selected_model = st.radio(
-        "Select Model:",
-        MODELS,
-        format_func=get_model_name,
-        key="selected_model_image",
-        horizontal=True,
-    )
-
     furniture, oven, er_diagrams, glasses, math_reasoning = st.tabs(
         [
-            "Furniture recommendation",
-            "Oven instructions",
-            "ER diagrams",
-            "Glasses recommendation",
-            "Math reasoning",
-        ]
+            "🛋️ Furniture recommendation",
+            "🔥 Oven Instructions",
+            "📊 ER Diagrams",
+            "👓 Glasses",
+            "🧮 Math Reasoning",
+        ],
     )
 
     with furniture:
@@ -612,11 +559,7 @@ If instructions include buttons, also explain where those buttons are physically
 
         st.write(
             """Gemini is capable of image comparison and providing recommendations. This can be useful in industries like e-commerce and retail.
-<<<<<<< HEAD
-                    Below is an example of choosing which pair of glasses would be better suited to various face types:"""
-=======
           Below is an example of choosing which pair of glasses would be better suited to various face types:"""
->>>>>>> main
         )
         face_type = st.radio(
             "What is your face shape?",
@@ -640,18 +583,6 @@ If instructions include buttons, also explain where those buttons are physically
         )
         content = [
             f"""Which of these glasses you recommend for me based on the shape of my face:{face_type}?
-<<<<<<< HEAD
-           I have an {face_type} shape face.
-           Glasses 1: """,
-            Part.from_uri(file_uri=compare_img_1_uri, mime_type="image/jpeg"),
-            """
-           Glasses 2: """,
-            Part.from_uri(file_uri=compare_img_2_uri, mime_type="image/jpeg"),
-            f"""
-           Explain how you made to this decision.
-           Provide your recommendation based on my face shape, and reasoning for each in {output_type} format.
-           """,
-=======
       I have an {face_type} shape face.
       Glasses 1: """,
             Part.from_uri(file_uri=compare_img_1_uri, mime_type="image/jpeg"),
@@ -662,7 +593,6 @@ If instructions include buttons, also explain where those buttons are physically
       Explain how you made to this decision.
       Provide your recommendation based on my face shape, and reasoning for each in {output_type} format.
       """,
->>>>>>> main
         ]
         tab1, tab2 = st.tabs(["Response", "Prompt"])
         compare_img_description = st.button(
@@ -737,16 +667,13 @@ INSTRUCTIONS:
 with tab4:
     st.subheader("Video Playground")
 
-    selected_model = st.radio(
-        "Select Model:",
-        MODELS,
-        format_func=get_model_name,
-        key="selected_model_video",
-        horizontal=True,
-    )
-
     vide_desc, video_tags, video_highlights, video_geolocation = st.tabs(
-        ["Video description", "Video tags", "Video highlights", "Video geolocation"]
+        [
+            "📄 Description",
+            "🏷️ Tags",
+            "✨ Highlights",
+            "📍 Geolocation",
+        ]
     )
 
     with vide_desc:
