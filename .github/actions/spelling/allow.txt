@@ -635,6 +635,7 @@ Autorater
 autosxs
 AUVs
 avec
+Avenir
 aworkflow
 axs
 backstory
@@ -870,6 +871,7 @@ draig
 Dreesen
 drilldown
 drinkware
+dropbtn
 dropdown
 dropna
 DRV
@@ -1753,6 +1755,7 @@ RNN
 RNNs
 Robeco
 Robo
+Robotica
 ROOTSPAN
 Rosberg
 rpet
