@@ -1251,6 +1251,7 @@ jit
 jiwer
 Joji
 Jolyon
+Jostar
 JPY
 jsemer
 jsonify
@@ -1516,6 +1517,7 @@ NICOLAS
 nih
 Nihonga
 Niitsuma
+nin
 Nith
 nlp
 nmade
@@ -1661,6 +1663,7 @@ Poirot
 Polong
 ponyo
 Ponyo
+Popken
 popleft
 Porat
 postictal
