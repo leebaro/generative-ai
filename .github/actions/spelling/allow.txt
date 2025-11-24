@@ -638,6 +638,8 @@ avec
 Avenir
 aworkflow
 axs
+Ayra
+Ayyappa
 backstory
 backticks
 bagchi
@@ -711,7 +713,10 @@ CAMQAA
 Caprese
 carbonara
 Carcante
+cardio
+Cardio
 Cardizem
+Casagrand
 cashify
 CASP
 catus
@@ -722,6 +727,7 @@ ccc
 cce
 cctv
 cdiv
+CDNs
 ceb
 ceo
 cer
@@ -981,6 +987,7 @@ fiqa
 firestore
 firewalls
 Fishburne
+FITNESSS
 fixmycar
 flac
 Flahs
@@ -1069,6 +1076,7 @@ gke
 GKE
 Gleyber
 glowin
+gmaps
 Gmb
 GmbH
 gms
@@ -1121,6 +1129,7 @@ HDFC
 hdfs
 HDFS
 hdlr
+hdone
 hdtv
 heatmap
 heatmapgl
@@ -1140,6 +1149,8 @@ HMO
 hnsw
 Hogwarts
 Homesley
+Hoodi
+Horamavu
 Hossein
 hotpotqa
 hovermode
@@ -1374,6 +1385,7 @@ Malware
 Mamah
 Mandiri
 manquez
+Manyata
 mapbox
 marp
 Masaru
@@ -1463,6 +1475,7 @@ myaccount
 mydb
 mydomain
 NADPH
+Nagar
 Nagasu
 Najim
 Nakoso
@@ -1556,6 +1569,7 @@ Ollama
 olleh
 omn
 Omnibox
+OMR
 onesie
 onesies
 Onone
@@ -1581,6 +1595,7 @@ Pakeman
 paleo
 paligemma
 palustris
+Palya
 pancetta
 pandoc
 pantarba
@@ -1623,6 +1638,8 @@ Photoshop
 Pichai
 pietra
 pii
+pilates
+Pilates
 pincodes
 Pistorius
 pixmap
@@ -1665,6 +1682,7 @@ pth
 PTx
 pubmed
 pubspec
+Puram
 putalpha
 putdata
 pvc
@@ -1811,6 +1829,7 @@ Sestero
 setlocal
 sft
 Sha'carri
+shalas
 Shankman
 Shaoxiong
 sharegpt
@@ -1818,6 +1837,7 @@ Sharmila
 Shawshank
 Shazeer
 Shenzhou
+Shibuya
 Shklovsky
 Shohei
 shortdesc
@@ -1912,6 +1932,7 @@ tastetest
 tavily
 Tbk
 Tbl
+TBY
 TCEHY
 telework
 tencel
