@@ -1114,6 +1114,7 @@ gunicorn
 GWLP
 hadolint
 hahaha
+Haichao
 halluc
 Hamamoto
 Hamers
