@@ -1880,6 +1880,7 @@ SMSN
 SNB
 SNE
 snowboard
+socketio
 Sono
 sourced
 spamming
